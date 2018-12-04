@@ -18,7 +18,7 @@ function loadLevel(levelToLoad) {
         var newButton = document.createElement('BUTTON');
         gameButtons.appendChild(newButton);
         newButton.innerText = button.buttonText;
-        var nextLevel = 0;
+        var nextLevel = button.buttonAlternative;
         if ((button.dependsOn != null && levels[button.dependsOn].itemTaken) || button.dependsOn == null) {
             nextLevel = button.buttonOnclick
         }

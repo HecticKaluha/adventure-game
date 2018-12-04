@@ -4,11 +4,10 @@ var gameButtons = document.getElementById('game-buttons');
 var gameTitle = document.getElementById('title');
 var description = document.getElementById('description');
 var levels = [
-    {backgroundImageSrc: 'img/game-over.jpg',title:'Je bent dood', description:'Je hebt de verkeerde keuze gemaakt', buttons:[{buttonText:'Restart', buttonOnclick:'restart', dependsOn: null}], itemAvailable: false, itemIMageSource:'', itemPosX:'',itemPosy:'', itemTaken: false},
-    {backgroundImageSrc: 'img/level1.jpg',title:'Je bent in een bar, het wordt al laat!', description:'De barman geeft aan dat hij wilt gaan afsluiten. Wat wil je doen?', buttons:[{buttonText:'Speel een spelletje pool', buttonOnclick:'2', dependsOn: null},{ buttonText: 'Verlaat de bar en zoek een andere plek omde avond door te brengen',buttonOnclick:'3', dependsOn: null}], itemAvailable: true, itemIMageSource:'', itemPosX:'',itemPosy:'', itemTaken: false},
-    {backgroundImageSrc: 'img/level1.jpg',title:'Dit is level 1', description:'Dit is description van level 1', buttons:[{buttonText:'knop 1 level 1', buttonOnclick:'2', dependsOn: null},{ buttonText: 'knop 2 level 1',buttonOnclick:'3', dependsOn: null}, {buttonText: 'knop 3 level 1', buttonOnclick:'4', dependsOn: null}], itemAvailable: false, itemIMageSource:'', itemPosX:'',itemPosy:'', itemTaken: false},
-    {backgroundImageSrc: 'img/level2.jpg',title:'Dit is level 2', description:'Dit is description van level 2', buttons:[{buttonText:'knop 1 level 2', buttonOnclick:'3', dependsOn: null},{ buttonText: 'knop 2 level 2',buttonOnclick:'4', dependsOn: null}, {buttonText: 'knop 3 level 2', buttonOnclick:'5', dependsOn: null}], itemAvailable: true, itemIMageSource:'img/itemLevel2.png', itemPosX:'900px',itemPosy:'100px', itemWidth:'150px',itemHeight:'50px', itemTaken: false},
-    {backgroundImageSrc: 'img/level1.jpg',title:'Dit is level 3', description:'Dit is description van level 3', buttons:[{buttonText:'knop 1 level 3', buttonOnclick:'1', dependsOn: 2},{ buttonText: 'knop 2 level 3',buttonOnclick:'4', dependsOn: null}, {buttonText: 'knop 3 level 2', buttonOnclick:'5', dependsOn: null}], itemAvailable: false, itemIMageSource:'', itemPosX:'',itemPosy:'', itemWidth:'',itemHeight:'', itemTaken: false},
+    {backgroundImageSrc: 'img/backgrounds/game-over.jpg',title:'Je bent af!', description:'Je hebt de verkeerde keuze gemaakt', buttons:[{buttonText:'Restart', buttonOnclick:'restart', dependsOn: null}], itemAvailable: false, itemImageSource:'', itemPosX:'',itemPosy:'', itemWidth:'150px',itemHeight:'50px', itemTaken: false},
+    {level:1, backgroundImageSrc: 'img/backgrounds/bar.jpg',title:'Je bent in een bar, het wordt al laat!', description:'De barman geeft aan dat hij wilt gaan afsluiten. Neem je nog een biertje voor onderweg, of blijf je voor een potje pool? Wat wil je doen?', buttons:[{buttonText:'Speel pool', buttonOnclick:'2', dependsOn: null},{ buttonText: 'Verlaat de bar',buttonOnclick:'3', dependsOn: null}], itemAvailable: true, itemImageSource:'img/items/beer.png', itemPosX:'900px',itemPosy:'340px', itemWidth:'100px',itemHeight:'110px', itemTaken: false},
+    {level:2, backgroundImageSrc: 'img/backgrounds/jail.jpg',title:'De barman heeft de politie gebeld!', description:'Vanwege ongeoorloofd gedrag ben je opgepakt en zit je vast in de gevangenis', buttons:[{buttonText:'Herstart', buttonOnclick:'restart', dependsOn: null}], itemAvailable: false, itemImageSource:'', itemPosX:'',itemPosy:'', itemWidth:'',itemHeight:'', itemTaken: false},
+    {level:3, backgroundImageSrc: 'img/backgrounds/alley.jpg',title:'Je stapt naar uit de bar.', description:'Je bevind je in een steeg. Een zwerver komt op je afgelopen en smeekt om wat alcohol.', buttons:[{buttonText:'Geef de man een flesje bier', buttonOnclick:'4', dependsOn: 1},{buttonText: 'Loop snel door',buttonOnclick:'5', dependsOn: null}], itemAvailable: false, itemImageSource:'', itemPosX:'',itemPosy:'', itemWidth:'',itemHeight:'', itemTaken: false},
 ];
 
 loadLevel(1);
@@ -26,7 +25,7 @@ function loadLevel(levelToLoad){
         var button = levels[levelToLoad].buttons[i];
         var newButton = document.createElement('BUTTON');
         gameButtons.appendChild(newButton);
-        newButton.innerText = levels[levelToLoad].buttons[i].buttonText;
+        newButton.innerText = button.buttonText;
         var nextLevel = 0;
         if((button.dependsOn != null && levels[button.dependsOn].itemTaken) || button.dependsOn == null) {
             nextLevel = button.buttonOnclick
@@ -39,7 +38,7 @@ function loadLevel(levelToLoad){
     }
     //set the item to pickup if necessary
     if(levels[levelToLoad].itemAvailable && !levels[levelToLoad].itemTaken){
-        inventoryItem.src = levels[levelToLoad].itemIMageSource;
+        inventoryItem.src = levels[levelToLoad].itemImageSource;
         inventoryItem.style.display = "block";
         inventoryItem.style.width = levels[levelToLoad].itemWidth;
         inventoryItem.style.height = levels[levelToLoad].itemHeight;

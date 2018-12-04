@@ -7,3 +7,19 @@ body{
 #inventoryItem{
     position:absolute;
 }
+
+#title{
+    background-color: rgba(50,50,50,0.8);
+}
+#description{
+    background-color: rgba(50,50,50,0.8);
+}
+#game-buttons{
+    text-align:center;
+    margin-top: 400px;
+
+}
+#game-container button{
+    margin: 5px 15px 5px 0;
+}
+

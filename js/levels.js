@@ -8,6 +8,7 @@ var levels = [
             {
                 buttonText: 'Restart',
                 buttonOnclick: 'restart',
+                buttonAlternative: '',
                 dependsOn: null
             }
         ],
@@ -15,8 +16,8 @@ var levels = [
         itemImageSource: '',
         itemPosX: '',
         itemPosy: '',
-        itemWidth: '150px',
-        itemHeight: '50px',
+        itemWidth: '',
+        itemHeight: '',
         itemTaken: false
     },
     {
@@ -28,6 +29,7 @@ var levels = [
             {
                 buttonText: 'Speel pool',
                 buttonOnclick: '2',
+                buttonAlternative: '',
                 dependsOn: null
             }, {
                 buttonText: 'Verlaat de bar',
